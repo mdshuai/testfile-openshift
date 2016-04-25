@@ -11,6 +11,7 @@ objects:
     metadata: 
       name: pi-restartpolicy
     spec: 
+      manualSelector: true
       selector: 
         matchLabels: 
           app: pi-restartpolicy
