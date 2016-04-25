@@ -2,15 +2,15 @@ apiVersion: v1
 kind: Pod
 metadata: 
   labels: 
-    name: hello-openshift
-  name: hello-openshift
+    name: test-setuid
+  name: test-setuid
 spec: 
   containers: 
     - 
       capabilities: {}
       image: "deshuai/hello-openshift:root"
       imagePullPolicy: IfNotPresent
-      name: hello-openshift
+      name: test-setuid
       ports: 
         - 
           containerPort: 8080
