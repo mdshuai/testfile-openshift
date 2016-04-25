@@ -12,6 +12,6 @@ spec:
     spec:
       containers:
       - name: pi-runonce
-        image: perl
+        image: openshift/perl-516-centos7
         command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
       restartPolicy: Never
