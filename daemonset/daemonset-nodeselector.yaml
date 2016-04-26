@@ -12,7 +12,7 @@ spec:
         name: hello-daemonset
     spec:
       nodeSelector:
-        daemon: "no"
+        daemon: "yes"
       containers:
       - image: openshift/hello-openshift
         imagePullPolicy: Always
