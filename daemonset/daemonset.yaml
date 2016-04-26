@@ -21,4 +21,4 @@ spec:
         resources: {}
         terminationMessagePath: /dev/termination-log
       serviceAccount: default
-      terminationGracePeriodSeconds: 1
+      terminationGracePeriodSeconds: 10
