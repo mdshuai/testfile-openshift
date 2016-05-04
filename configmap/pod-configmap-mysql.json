@@ -1,0 +1,71 @@
+{
+    "kind": "Pod",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "mysql-1-x4i4t"
+    },
+    "spec": {
+        "volumes": [
+            {
+                "name": "config-volume",
+                "configMap": {
+                    "name": "special-config"
+                }
+            },
+            {
+                "name": "mysql-data",
+                "emptyDir": {}
+            }
+        ],
+        "containers": [
+            {
+                "name": "mysql",
+                "image": "openshift/mysql-56-rhel7:latest",
+                "ports": [
+                    {
+                        "containerPort": 3306,
+                        "protocol": "TCP"
+                    }
+                ],
+                "env": [
+                    {
+                        "name": "MYSQL_USER",
+                        "value": "user5GJ"
+                    },
+                    {
+                        "name": "MYSQL_PASSWORD",
+                        "value": "wPev8QiO5dpdUmTq"
+                    },
+                    {
+                        "name": "MYSQL_DATABASE",
+                        "value": "sampledb"
+                    }
+                ],
+                "resources": {
+                    "limits": {
+                        "memory": "512Mi"
+                    },
+                    "requests": {
+                        "memory": "512Mi"
+                    }
+                },
+                "volumeMounts": [
+                    {
+                        "name": "config-volume",
+                        "mountPath": "/etc/config"
+                    },
+                    {
+                        "name": "mysql-data",
+                        "mountPath": "/var/lib/mysql/data"
+                    }
+                ],
+                "terminationMessagePath": "/dev/termination-log",
+                "imagePullPolicy": "IfNotPresent"
+            }
+        ],
+        "restartPolicy": "Never",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst"
+    },
+    "status": {}
+}
