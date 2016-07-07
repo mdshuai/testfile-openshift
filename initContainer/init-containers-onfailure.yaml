@@ -7,9 +7,14 @@ metadata:
   annotations:
     pod.alpha.kubernetes.io/init-containers: '[
         {
-            "name": "wait",
+            "name": "success",
             "image": "centos:centos7",
-            "command": ["/bin/sh", "-c", "sleep 30"]
+            "command": ["/bin/true"]
+        },
+        {
+            "name": "fail",
+            "image": "centos:centos7",
+            "command": ["/bin/false"]
         }
     ]'
 spec:
