@@ -6,34 +6,34 @@ metadata:
   name: hello-pod
   annotations:
     pod.alpha.kubernetes.io/init-containers: '[{
-	"name": "wait1",
-	"image": "centos:centos7",
-	"command": ["/bin/sh", "-c", "sleep 10"],
-	"resources": {
-		"limits": {
-			"cpu": "500m",
-			"memory": "400Mi"
-		},
-		"requests": {
-			"cpu": "400m",
-			"memory": "300Mi"
-		}
-	}
+    "name": "wait1",
+    "image": "centos:centos7",
+    "command": ["/bin/sh", "-c", "sleep 10"],
+    "resources": {
+        "limits": {
+            "cpu": "500m",
+            "memory": "400Mi"
+        },
+        "requests": {
+            "cpu": "400m",
+            "memory": "300Mi"
+        }
+    }
     }, 
     {
-	"name": "wait2",
-	"image": "centos:centos7",
-	"command": ["/bin/sh", "-c", "sleep 10"],
-	"resources": {
-		"limits": {
-			"cpu": "300m",
-			"memory": "200Mi"
-		},
-		"requests": {
-			"cpu": "200m",
-			"memory": "100Mi"
-		}
-	}
+    "name": "wait2",
+    "image": "centos:centos7",
+    "command": ["/bin/sh", "-c", "sleep 10"],
+    "resources": {
+        "limits": {
+            "cpu": "300m",
+            "memory": "200Mi"
+        },
+        "requests": {
+            "cpu": "200m",
+            "memory": "100Mi"
+        }
+    }
     }]'
 spec:
   containers:
@@ -60,6 +60,11 @@ spec:
     - image: "docker.io/deshuai/hello-pod:latest"
       imagePullPolicy: IfNotPresent
       name: hello-pod-1
+      env:
+        - name: PORT
+          value: "8081"
+        - name: SECOND_PORT
+          value: "8082"
       ports:
         - containerPort: 8080
           protocol: TCP
