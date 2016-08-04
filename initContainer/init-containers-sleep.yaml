@@ -9,7 +9,7 @@ metadata:
         {
             "name": "sleep",
             "image": "centos:centos7",
-            "command": ["/bin/sh", "-c", "sleep 600"]
+            "command": ["/bin/sh", "-c", "while :; do sleep 2; echo hello init container; done"]
         }
     ]'
 spec:
