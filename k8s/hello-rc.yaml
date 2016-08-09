@@ -33,4 +33,3 @@ spec:
         restartPolicy: Always
         securityContext: {}
         terminationGracePeriodSeconds: 30
-        activeDeadlineSeconds: 60
