@@ -11,9 +11,9 @@ spec:
       name: hello-pod
       env:
         - name: PORT 
-          value: 8080
+          value: "8080"
         - name: SECOND_PORT
-          value: 8888
+          value: "8888"
       ports:
         - containerPort: 8080
           protocol: TCP
@@ -30,9 +30,9 @@ spec:
       name: hello-pod-1
       env:
         - name: PORT 
-          value: 8081
+          value: "8081"
         - name: SECOND_PORT
-          value: 8082
+          value: "8082"
       ports:
         - containerPort: 8081
           protocol: TCP
