@@ -11,12 +11,12 @@ metadata:
 	"command": ["/bin/sh", "-c", "sleep 10"],
 	"resources": {
 		"limits": {
-			"cpu": "50m",
-			"memory": "50Mi"
-		},
-		"requests": {
 			"cpu": "100m",
 			"memory": "100Mi"
+		},
+		"requests": {
+			"cpu": "50m",
+			"memory": "50Mi"
 		}
 	}
     }, 
