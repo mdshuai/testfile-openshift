@@ -4,7 +4,8 @@ kind: Job
 metadata:
   name: pi
 spec:
-  parallelism: 5
+  completions: 5
+  parallelism: 1
   template:
     metadata:
       name: pi
