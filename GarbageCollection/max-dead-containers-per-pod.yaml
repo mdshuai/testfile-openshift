@@ -2,58 +2,32 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    name: hello-pod
-  name: hello-pod
+    name: multi-containers
+  name: multi-containers
 spec:
   containers:
     - image: "docker.io/centos:centos7"
-      name: pre-test
+      name: test1
       imagePullPolicy: IfNotPresent
-      command: ["/bin/true"]
+      command: ["sh", "-c", "echo hello test1"]
     - image: "docker.io/centos:centos7"
-      name: post-test
+      name: test2
       imagePullPolicy: IfNotPresent
-      command: ["/bin/true"]
-    - image: "docker.io/deshuai/hello-pod:latest"
+      command: ["sh", "-c", "echo hello test2"]
+    - image: "docker.io/centos:centos7"
+      name: test3
       imagePullPolicy: IfNotPresent
-      name: hello-pod
-      env:
-        - name: PORT 
-          value: "8080"
-        - name: SECOND_PORT
-          value: "8888"
-      ports:
-        - containerPort: 8080
-          protocol: TCP
-      resources: {}
-      securityContext:
-        capabilities: {}
-        privileged: false
-      terminationMessagePath: /dev/termination-log
-      volumeMounts:
-        - mountPath: /tmp
-          name: tmp
-    - image: "docker.io/deshuai/hello-pod:latest"
+      command: ["sh", "-c", "echo hello test3"]
+    - image: "docker.io/centos:centos7"
+      name: test4
       imagePullPolicy: IfNotPresent
-      name: hello-pod-1
-      env:
-        - name: PORT 
-          value: "8081"
-        - name: SECOND_PORT
-          value: "8082"
-      ports:
-        - containerPort: 8081
-          protocol: TCP
-      resources: {}
-      securityContext:
-        capabilities: {}
-        privileged: false
-      terminationMessagePath: /dev/termination-log
-      volumeMounts:
-        - mountPath: /tmp
-          name: tmp
+      command: ["sh", "-c", "echo hello test4"]
+    - image: "docker.io/centos:centos7"
+      name: test5
+      imagePullPolicy: IfNotPresent
+      command: ["sh", "-c", "echo hello test5"]
   dnsPolicy: ClusterFirst
-  restartPolicy: Always
+  restartPolicy: OnFailure
   serviceAccount: ""
   volumes:
     - emptyDir: {}
