@@ -5,7 +5,7 @@ metadata:
     run: hello-hpa
   name: hello-hpa
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     run: hello-hpa
   template:
