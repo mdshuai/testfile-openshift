@@ -2,32 +2,28 @@ apiVersion: v1
 kind: ReplicationController
 metadata: 
   labels:
-    run: hello-openshift
-  name: hello-openshift
+    run: resource-consumer
+  name: resource-consumer
 spec: 
   replicas: 1
   selector: 
-    run: hello-openshift
+    run: resource-consumer
   template: 
     metadata:
       creationTimestamp: null
       labels: 
-        run: hello-openshift
+        run: resource-consumer
     spec: 
         containers:
-        - image: openshift/hello-openshift
+        - image: docker.io/ocpqe/resource_consumer:v1
           imagePullPolicy: Always
-          name: hello-openshift
+          name: resource-consumer
           ports:
           - containerPort: 8080
             protocol: tcp
           resources: 
-            limits:
-              cpu: 500m
-              memory: 512Mi
             requests: 
               cpu: 100m
-              memory: 256Mi
           terminationMessagePath: /dev/termination-log
         dnsPolicy: ClusterFirst
         restartPolicy: Always
