@@ -10,7 +10,6 @@ spec:
     run: resource-consumer
   template: 
     metadata:
-      creationTimestamp: null
       labels: 
         run: resource-consumer
     spec: 
