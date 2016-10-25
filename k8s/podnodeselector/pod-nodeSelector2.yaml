@@ -20,8 +20,9 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Always
   nodeSelector:
-    region: east
     env: test
+    infra: centos
     os: fedora
+    region: east
   serviceAccount: ""
 status: {}
