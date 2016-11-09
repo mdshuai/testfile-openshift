@@ -5,7 +5,7 @@ metadata:
     name: hello-pod
   name: hello-pod
   annotations:
-    security.alpha.kubernetes.io/sysctls: kernel.shm_rmid_forced=1,net.ipv4.ip_local_port_range=33768 61000,net.ipv4.tcp_syncookies=2
+    security.alpha.kubernetes.io/sysctls: kernel.shm_rmid_forced=1,net.ipv4.ip_local_port_range=33768 61000
 spec:
   containers:
     - image: "docker.io/deshuai/hello-pod:latest"
