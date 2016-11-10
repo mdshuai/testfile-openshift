@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: guaranteed 
+  generateName: guaranteed-
+spec:
+  containers:
+    - image: "docker.io/ocpqe/hello-pod:latest"
+      imagePullPolicy: IfNotPresent
+      name: guaranteed
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      resources:
+        limits:
+          cpu: 100m
+          memory: 300Mi
+      securityContext:
+        capabilities: {}
+        privileged: false
+      terminationMessagePath: /dev/termination-log
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  serviceAccount: ""
+status: {}
