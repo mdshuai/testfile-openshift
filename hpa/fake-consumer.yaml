@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+  labels:
+    run: fake-consumer
+  name: fake-consumer
+spec: 
+  replicas: 4
+  selector: 
+    run: resource-consumer
+    deployment: resource-consumer-1
+    deploymentconfig: resource-consumer
+  template: 
+    metadata:
+      labels: 
+        run: resource-consumer
+        deployment: resource-consumer-1
+        deploymentconfig: resource-consumer
+    spec: 
+        containers:
+        - image: docker.io/ocpqe/resource_consumer:v1
+          imagePullPolicy: Always
+          name: fake-consumer
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - cat
+              - /tmp/healthy
+            initialDelaySeconds: 36000
+            periodSeconds: 3600
+          fakes: 
+            requests: 
+              cpu: 200m
+          terminationMessagePath: /dev/termination-log
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
