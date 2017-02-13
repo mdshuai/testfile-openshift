@@ -1,0 +1,32 @@
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      labels:
+        deployment: resource-consumer-1
+        deploymentconfig: resource-consumer
+        run: resource-consumer
+      generateName: hpa-fake-
+    spec:
+      containers:
+        - image: docker.io/ocpqe/resource_consumer:v1
+          command:
+           - /consume-cpu/consume-cpu
+          args:
+           - -duration-sec=60
+           - -millicores=200
+          imagePullPolicy: IfNotPresent
+          name: hpa-fake
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          securityContext:
+            capabilities: {}
+            privileged: false
+          terminationMessagePath: /dev/termination-log
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      serviceAccount: ""
