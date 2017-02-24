@@ -6,3 +6,4 @@ data:
   number_of_members: "1"
   duplicate_key: FROM_CONFIG_MAP
   REPLACE_ME: "a value"
+  second_cmap_key: test
