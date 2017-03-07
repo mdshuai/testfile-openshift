@@ -6,14 +6,14 @@ items:
   kind: Pod
   metadata:
     labels:
-      name: hello-pod
-    name: hello-pod
+      name: hello-pod-1
+    name: hello-pod-1
   spec:
     containers:
       - image: "docker.io/ocpqe/hello-pod:latest"
         command: ["sh", "-c", "exit 0"]
         imagePullPolicy: IfNotPresent
-        name: hello-pod
+        name: hello-pod-1
         ports:
           - containerPort: 8080
             protocol: TCP
@@ -37,14 +37,14 @@ items:
   kind: Pod
   metadata:
     labels:
-      name: hello-pod-1
-    name: hello-pod-1
+      name: hello-pod-2
+    name: hello-pod-2
   spec:
     containers:
       - image: "docker.io/ocpqe/hello-pod:latest"
         command: ["sh", "-c", "exit 1"]
         imagePullPolicy: IfNotPresent
-        name: hello-pod-1
+        name: hello-pod-2
         ports:
           - containerPort: 8080
             protocol: TCP
