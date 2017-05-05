@@ -1,4 +1,3 @@
-[root@dhcp-140-98 dma]# cat pod1.yaml 
 apiVersion: v1
 kind: Pod
 metadata:
