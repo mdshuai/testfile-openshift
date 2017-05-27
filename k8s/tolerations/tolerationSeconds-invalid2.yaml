@@ -24,5 +24,5 @@ spec:
     - key: "key1"
       operator: "Equal"
       value: "value1"
-      effect: " PreferNoSchedule"
+      effect: "PreferNoSchedule"
       tolerationSeconds: 120
