@@ -1,0 +1,20 @@
+apiVersion: servicecatalog.k8s.io/v1alpha1
+bindable: true
+brokerName: ups-broker
+description: A user provided service
+externalID: 4f6e6cf6-ffdd-425f-a2c7-3c9258ad2467
+externalMetadata: null
+kind: ServiceClass
+metadata:
+  name: user-provided-service-1
+  resourceVersion: "3"
+planUpdatable: false
+plans:
+- description: Sample plan description
+  externalID: 86064792-7ea2-467b-af93-ac9694d96d51
+  externalMetadata: null
+  free: true
+  name: default
+alphaTags:
+  - mycat
+  - database
