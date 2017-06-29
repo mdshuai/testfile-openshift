@@ -1,3 +1,4 @@
+### 1. Enalbe aggregator in OpenShift
 #### Generate the key for aggregator
 ```
 oadm ca create-signer-cert \
@@ -37,6 +38,8 @@ authConfig:
     extraHeaderPrefixes:
     - X-Remote-Extra-
 ```
+
+### 2. Extend sample-apiserver api by aggregator
 
 #### Build sample-apiserver image or you can use `docker.io/deshuai/kube-sample-apiserver:latest`
 ```
