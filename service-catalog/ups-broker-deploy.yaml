@@ -30,7 +30,7 @@ spec:
       - args:
         - --port
         - "8080"
-        image: docker.io/deshuai/user-broker:canary
+        image: docker.io/ocpqe/user-broker:latest
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
