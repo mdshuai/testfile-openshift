@@ -9,6 +9,8 @@ metadata:
     openshift.io/sa.scc.uid-range: 1000070000/10000
     scheduler.alpha.kubernetes.io/defaultTolerations: '[ { "key": "key3", "value":
       "value3" }, { "key": "key4", "value": "value4" } ]'
+    scheduler.alpha.kubernetes.io/tolerationsWhitelist: '[ { "key": "key3", "value":
+      "value3" }, { "key": "key4", "value": "value4" } ]'
   creationTimestamp: 2017-09-14T14:37:03Z
   generateName: dma-
 spec:
