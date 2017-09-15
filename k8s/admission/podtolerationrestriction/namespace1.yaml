@@ -7,11 +7,9 @@ metadata:
     openshift.io/sa.scc.mcs: s0:c8,c7
     openshift.io/sa.scc.supplemental-groups: 1000070000/10000
     openshift.io/sa.scc.uid-range: 1000070000/10000
-    scheduler.alpha.kubernetes.io/defaultTolerations: '[ { "key": "key3", "value":
-      "value3" }, { "key": "key4", "value": "value4" } ]'
-    scheduler.alpha.kubernetes.io/tolerationsWhitelist: '[ { "key": "key3", "value":
-      "value3" }, { "key": "key4", "value": "value4" } ]'
-  creationTimestamp: 2017-09-14T14:37:03Z
+    scheduler.alpha.kubernetes.io/defaultTolerations: '[ { "key": "key1", "value":"value1" }]'
+    scheduler.alpha.kubernetes.io/tolerationsWhitelist: '[ { "key": "key1", "value":
+      "value1" }, { "key": "key2", "value": "value2" } ]'
   generateName: dma-
 spec:
   finalizers:
