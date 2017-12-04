@@ -1,0 +1,19 @@
+kind: HorizontalPodAutoscaler
+apiVersion: autoscaling/v2beta1
+metadata:
+  name: object-hpa
+spec:
+  scaleTargetRef:
+    kind: ReplicationController
+    name: hello-openshift
+    apiVersion: v1
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Object
+    object:
+      target:
+        kind: Service
+        name: sample-metrics-app
+      metricName: http_requests
+      targetValue: 100m
