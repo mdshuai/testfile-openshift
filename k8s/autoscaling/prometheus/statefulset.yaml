@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: sample-metrics-prom
+    prometheus: sample-metrics-prom
+  name: prometheus-sample-metrics-prom
+  namespace: default
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: prometheus
+      prometheus: sample-metrics-prom
+  serviceName: prometheus-operated
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: prometheus
+        prometheus: sample-metrics-prom
+    spec:
+      containers:
+      - args:
+        - --config.file=/etc/prometheus/config/prometheus.yaml
+        - --storage.tsdb.path=/var/prometheus/data
+        - --storage.tsdb.retention=7d
+        - --web.enable-lifecycle
+        - --web.route-prefix=/
+        image: luxas/prometheus:v2.0.0-rc.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /status
+            port: web
+            scheme: HTTP
+          initialDelaySeconds: 300
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        name: prometheus
+        ports:
+        - containerPort: 9090
+          name: web
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /status
+            port: web
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        resources:
+          requests:
+            memory: 300Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/prometheus/config
+          name: config
+          readOnly: true
+        - mountPath: /etc/prometheus/rules
+          name: rules
+          readOnly: true
+        - mountPath: /var/prometheus/data
+          name: prometheus-sample-metrics-prom-db
+          subPath: prometheus-db
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 2000
+        runAsNonRoot: true
+        runAsUser: 1000
+      serviceAccount: prometheus
+      serviceAccountName: prometheus
+      volumes:
+      - name: config
+        secret:
+          defaultMode: 420
+          secretName: prometheus-sample-metrics-prom
+      - emptyDir: {}
+        name: rules
+  updateStrategy:
+    type: RollingUpdate
+  volumeClaimTemplates:
+  - metadata:
+      creationTimestamp: null
+      name: prometheus-sample-metrics-prom-db
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 3Gi
+      storageClassName: rook-block
