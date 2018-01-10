@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: besteffort
+  generateName: besteffort-
+spec:
+  containers:
+    - image: "docker.io/ocpqe/hello-pod:latest"
+      imagePullPolicy: IfNotPresent
+      name: besteffort
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      securityContext:
+        capabilities: {}
+        privileged: false
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  nodeSelector:
+    cpumanager: "true"
