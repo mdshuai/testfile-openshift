@@ -1,7 +1,7 @@
 kind: HorizontalPodAutoscaler
 apiVersion: autoscaling/v2beta1
 metadata:
-  name: pods-hpa
+  name: custom-pods
 spec:
   scaleTargetRef:
     kind: ReplicationController
