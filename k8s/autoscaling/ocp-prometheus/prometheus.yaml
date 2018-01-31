@@ -274,6 +274,8 @@ objects:
           expr: sum without (client,instance,contentType) (rate(apiserver_request_count[5m]))
 
     prometheus.yml: |
+      global:
+        scrape_interval: 20s
       rule_files:
         - '*.rules'
 
