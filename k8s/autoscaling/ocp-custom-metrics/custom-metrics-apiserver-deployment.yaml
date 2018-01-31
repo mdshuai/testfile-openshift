@@ -19,7 +19,7 @@ spec:
       serviceAccountName: custom-metrics-apiserver
       containers:
       - name: custom-metrics-apiserver
-        image: docker.io/ocpqe/ocpqe/k8s-prometheus-adapter-amd64:v1beta1
+        image: docker.io/ocpqe/k8s-prometheus-adapter-amd64:v1beta1
         args:
         - /adapter
         - --secure-port=6443
