@@ -1,0 +1,38 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: pod-template
+objects:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    labels:
+      name: hello-pod
+    name: hello-pod
+  spec:
+    containers:
+      - image: openshift3/ose-pod:${IMAGE_TAG}
+        imagePullPolicy: Always
+        name: hello-pod
+        ports:
+          - containerPort: 8080
+            protocol: TCP
+        resources: {}
+        securityContext:
+          capabilities: {}
+          privileged: false
+        volumeMounts:
+          - mountPath: /tmp
+            name: tmp
+    dnsPolicy: ClusterFirst
+    restartPolicy: Always
+    serviceAccount: ""
+    volumes:
+      - emptyDir: {}
+        name: tmp
+parameters:
+- description: The image tag used for pull.
+  displayName: Image Tag
+  name: IMAGE_TAG
+  required: true
+  value: latest
