@@ -30,7 +30,7 @@ spec:
     sysctls:
     - name: kernel.shm_rmid_forced
       value: "1"
-    - name: net.ipv4.route.min_pmtu
-      value: "552"
+    - name: net.ipv4.ip_forward
+      value: "0"
     - name: kernel.msgmax
       value: "65536"
