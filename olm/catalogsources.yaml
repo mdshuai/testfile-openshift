@@ -1,0 +1,15 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  creationTimestamp: 2018-08-22T01:46:02Z
+  generation: 1
+  name: ocs
+  namespace: operator-lifecycle-manager
+  resourceVersion: "3692"
+  selfLink: /apis/operators.coreos.com/v1alpha1/namespaces/operator-lifecycle-manager/catalogsources/ocs
+  uid: 20854a0b-a5ad-11e8-87c5-0e1ab97141b2
+spec:
+  configMap: ocs
+  displayName: Open Cloud Services
+  publisher: Red Hat
+  sourceType: internal
